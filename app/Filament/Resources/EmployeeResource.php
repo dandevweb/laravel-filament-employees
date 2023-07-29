@@ -28,6 +28,12 @@ class EmployeeResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-briefcase';
 
+    protected static ?string $slug = 'funcionarios';
+
+    protected static ?string $modelLabel = 'Funcionário';
+
+    protected static ?string $pluralModelLabel = 'Funcionários';
+
     public static function form(Form $form): Form
     {
         return $form

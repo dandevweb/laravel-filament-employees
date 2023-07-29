@@ -27,6 +27,12 @@ class StateResource extends Resource
 
     protected static ?string $navigationGroup = 'System Management';
 
+    protected static ?string $modelLabel = 'Estado';
+
+    protected static ?string $pluralModelLabel = 'Estados';
+
+    protected static ?string $slug = 'estados';
+
     protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form

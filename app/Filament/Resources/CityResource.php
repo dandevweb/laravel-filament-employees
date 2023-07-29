@@ -26,6 +26,12 @@ class CityResource extends Resource
 
     protected static ?string $navigationGroup = 'System Management';
 
+    protected static ?string $modelLabel = 'Cidade';
+
+    protected static ?string $pluralModelLabel = 'Cidades';
+
+    protected static ?string $slug = 'cidades';
+
     protected static ?int $navigationSort = 3;
 
     public static function form(Form $form): Form
@@ -34,7 +40,9 @@ class CityResource extends Resource
             ->schema([
                 Card::make()
                     ->schema([
-                        Select::make('state_id')->relationship('state', 'name')->required(),
+                        Select::make('state_id')
+                            ->relationship('state', 'name')
+                            ->required(),
                         TextInput::make('name')->required()->maxLength(255),
                     ])
             ]);
