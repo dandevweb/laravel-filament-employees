@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\CityResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\CityResource\RelationManagers;
+use App\Filament\Resources\CityResource\RelationManagers\EmployeesRelationManager;
 
 class CityResource extends Resource
 {
@@ -23,14 +24,18 @@ class CityResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-office-building';
 
+    protected static ?string $navigationGroup = 'System Management';
+
+    protected static ?int $navigationSort = 3;
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Card::make()
                     ->schema([
-                        Select::make('state_id')->relationship('state', 'name'),
-                        TextInput::make('name'),
+                        Select::make('state_id')->relationship('state', 'name')->required(),
+                        TextInput::make('name')->required()->maxLength(255),
                     ])
             ]);
     }
@@ -58,7 +63,8 @@ class CityResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            EmployeesRelationManager::class,
+
         ];
     }
 
